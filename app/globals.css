@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 theme via CSS variables ─────────────── */
+@theme {
+  /* Colors */
+  --color-navy:            #1C2A39;
+  --color-navy-light:      #243347;
+  --color-beige:           #E6D9C7;
+  --color-ivory:           #F8F5F0;
+  --color-burgundy:        #6C2E3F;
+  --color-burgundy-light:  #8a3a4e;
+  --color-pearl:           #B5B5B5;
+
+  /* Fonts */
+  --font-family-serif: var(--font-cormorant), Georgia, serif;
+  --font-family-sans:  var(--font-jost), system-ui, sans-serif;
+
+  /* Keyframes */
+  --animate-fade-in:    fadeIn 0.9s ease forwards;
+  --animate-slide-up:   slideUp 0.8s ease forwards;
+  --animate-scale-in:   scaleIn 0.7s ease forwards;
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+}
+
+/* ─── Base ─────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8F5F0;
+  color: #1C2A39;
+  font-family: var(--font-jost), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F8F5F0; }
+::-webkit-scrollbar-thumb { background: #B5B5B5; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6C2E3F; }
+
+/* ─── Typography helpers ────────────────────────────── */
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  letter-spacing: 0.01em;
+}
+
+/* ─── Decorative divider ornament ───────────────────── */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6C2E3F;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
