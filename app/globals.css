@@ -63,6 +63,24 @@ h1, h2, h3 {
   letter-spacing: 0.01em;
 }
 
+/* ─── Sewing loader spin ─────────────────────────────── */
+@keyframes spinCW {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes needlePulse {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(108,46,63,0)); }
+  50%       { filter: drop-shadow(0 0 6px rgba(108,46,63,0.7)); }
+}
+
+/* ─── CTA button hover ───────────────────────────────── */
+.cta-btn:hover {
+  background-color: #6C2E3F;
+}
+.cta-btn:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
 /* ─── Decorative divider ornament ───────────────────── */
 .divider-ornament {
   display: flex;
