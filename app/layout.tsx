@@ -1,27 +1,34 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const sora = Sora({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
+  variable: "--font-sora",
   display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const jost = Jost({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-jost",
+  variable: "--font-jakarta",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Costusoft | Sistema de Gestión Textil",
+  title: "CostuSoft Control — El sistema que tu taller necesitaba",
   description:
-    "Costusoft combina la tradición artesanal europea con tecnología avanzada de gestión e inventario para empresas textiles de confección.",
-  keywords: "textil, confecciones, sistema de gestión, inventario, IA, calidad, elegancia",
+    "Inventario en tiempo real, predicciones de IA y optimización de producción para talleres de confecciones escolares. Powered by LLaMA 3.3, Prophet y XGBoost.",
+  keywords:
+    "costusoft, sistema gestion textil, inventario confecciones, prediccion demanda IA, optimizacion produccion, uniformes escolares, software taller",
+  openGraph: {
+    title: "CostuSoft Control — El sistema que tu taller necesitaba",
+    description:
+      "Inventario en tiempo real, predicciones de IA y optimización de producción para talleres de confecciones escolares.",
+    type: "website",
+    locale: "es_CO",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${cormorant.variable} ${jost.variable}`}>
+    <html lang="es" className={`${sora.variable} ${jakarta.variable}`}>
       <body>{children}</body>
     </html>
   );

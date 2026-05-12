@@ -1,116 +1,94 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function CTAFinal() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll(".reveal-cta").forEach((el, i) => {
-              setTimeout(() => {
-                (el as HTMLElement).style.opacity = "1";
-                (el as HTMLElement).style.transform = "translateY(0)";
-              }, i * 160);
-            });
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      id="contacto"
-      ref={sectionRef}
-      className="bg-navy py-32 lg:py-40 overflow-hidden relative"
+      id="contact"
+      className="section-padding relative overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #0b3d91 0%, #0d5aa8 40%, #1a7a2e 80%, #49c21b 100%)" }}
     >
-      {/* Subtle decorative pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: "repeating-linear-gradient(0deg, #E6D9C7 0, #E6D9C7 1px, transparent 0, transparent 50%), repeating-linear-gradient(90deg, #E6D9C7 0, #E6D9C7 1px, transparent 0, transparent 50%)",
-          backgroundSize: "40px 40px"
-        }}
+      {/* Grid overlay */}
+      <div className="absolute inset-0 grid-bg opacity-10" />
+
+      {/* Glow orbs */}
+      <div
+        className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
+        style={{ background: "radial-gradient(circle at top right, rgba(73,194,27,0.15) 0%, transparent 60%)" }}
+      />
+      <div
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
+        style={{ background: "radial-gradient(circle at bottom left, rgba(255,255,255,0.06) 0%, transparent 60%)" }}
       />
 
-      {/* Burgundy accent corner */}
-      <div className="absolute top-0 left-0 w-32 h-1 bg-burgundy" />
-      <div className="absolute top-0 left-0 w-1 h-32 bg-burgundy" />
-      <div className="absolute bottom-0 right-0 w-32 h-1 bg-burgundy" />
-      <div className="absolute bottom-0 right-0 w-1 h-32 bg-burgundy" />
+      <div className="container-landing relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
 
-      <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10">
-
-        {/* Eyebrow */}
-        <div
-          className="reveal-cta inline-flex items-center gap-3 mb-8"
-          style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
-        >
-          <span className="h-[1px] w-8 bg-burgundy" />
-          <span className="font-sans text-pearl text-[10px] tracking-[0.3em] uppercase">
-            Dé el primer paso
-          </span>
-          <span className="h-[1px] w-8 bg-burgundy" />
-        </div>
-
-        {/* Headline */}
-        <h2
-          className="reveal-cta font-serif text-ivory text-4xl md:text-5xl lg:text-6xl font-light leading-[1.15] mb-6"
-          style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
-        >
-          Su empresa textil merece
-          <br />
-          <em className="italic text-beige font-normal">la mejor gestión del mercado.</em>
-        </h2>
-
-        {/* Subline */}
-        <p
-          className="reveal-cta font-sans text-pearl text-[15px] leading-relaxed font-light max-w-xl mx-auto mb-12"
-          style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
-        >
-          Descubra cómo Costusoft puede transformar su operación. Sin compromisos,
-          con una demostración personalizada adaptada a su negocio.
-        </p>
-
-        {/* CTAs */}
-        <div
-          className="reveal-cta flex flex-col sm:flex-row gap-4 justify-center"
-          style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
-        >
-          <a
-            href="mailto:contacto@costusoft.com"
-            className="inline-flex items-center justify-center gap-3 bg-burgundy text-ivory font-sans text-[12px] tracking-[0.22em] uppercase px-10 py-4 hover:bg-burgundy-light transition-all duration-300 shadow-xl shadow-burgundy/20"
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2 badge mb-6"
+            style={{ background: "rgba(73,194,27,0.2)", border: "1px solid rgba(73,194,27,0.4)", color: "#86efac" }}
           >
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-              <rect x="1" y="1" width="14" height="10" rx="1" stroke="currentColor" strokeWidth="1.2"/>
-              <path d="M1 3l7 5 7-5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-            Solicitar Demostración
-          </a>
-          <a
-            href="tel:+1234567890"
-            className="inline-flex items-center justify-center gap-3 border border-ivory/30 text-ivory font-sans text-[12px] tracking-[0.22em] uppercase px-10 py-4 hover:border-ivory hover:bg-ivory/10 transition-all duration-300"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 2h3l1.5 3.5-2 1.5a9 9 0 004.5 4.5l1.5-2L14 11v3a1 1 0 01-1 1C5 15 0 9 0 2a1 1 0 011-1l1 1z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
-            </svg>
-            Llamar Ahora
-          </a>
-        </div>
+            <Sparkles className="w-3.5 h-3.5" />
+            Empieza hoy
+          </div>
 
-        {/* Assurance line */}
-        <p
-          className="reveal-cta font-sans text-pearl/50 text-[11px] tracking-[0.15em] uppercase mt-10"
-          style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
-        >
-          Sin costos ocultos · Implementación asistida · Soporte continuo
-        </p>
+          {/* Headline */}
+          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-5 leading-tight">
+            Tu taller merece{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, #49c21b 0%, #a3e635 50%, #ffffff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              decisiones inteligentes
+            </span>
+          </h2>
+
+          <p className="text-lg text-blue-100 leading-relaxed mb-10 max-w-xl mx-auto">
+            Deja de confiar en el instinto. Empieza a producir con datos,
+            predicciones de IA y el único optimizador ILP para talleres de
+            confección escolar en Colombia.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="mailto:contacto@costusoft.com"
+              className="inline-flex items-center gap-2 text-[15px] font-semibold py-4 px-10 rounded-xl w-full sm:w-auto justify-center transition-all duration-200 hover:-translate-y-0.5"
+              style={{
+                background: "linear-gradient(135deg, #49c21b, #3daf12)",
+                color: "white",
+                boxShadow: "0 4px 24px rgba(73,194,27,0.35)",
+              }}
+            >
+              Solicitar demo gratuita
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="https://app.costusoft.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[15px] font-medium py-4 px-10 rounded-xl w-full sm:w-auto justify-center transition-all duration-200 hover:-translate-y-0.5"
+              style={{
+                background: "rgba(255,255,255,0.12)",
+                border: "1px solid rgba(255,255,255,0.25)",
+                color: "white",
+              }}
+            >
+              Ver el sistema
+            </a>
+          </div>
+
+          {/* Footnote */}
+          <p className="mt-8 text-[13px] text-blue-200 opacity-70">
+            Sin contrato de permanencia · Configuración asistida · Soporte en español
+          </p>
+        </div>
       </div>
     </section>
   );
