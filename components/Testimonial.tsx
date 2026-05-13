@@ -31,7 +31,7 @@ export default function Testimonial() {
       className="bg-beige py-28 lg:py-36 overflow-hidden relative"
     >
       {/* Decorative large quote in background */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 font-serif text-[240px] text-burgundy/5 select-none leading-none pointer-events-none">
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 font-serif text-[clamp(120px,30vw,240px)] text-burgundy/5 select-none leading-none pointer-events-none">
         &ldquo;
       </div>
 
@@ -56,7 +56,7 @@ export default function Testimonial() {
           className="reveal-t"
           style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
         >
-          <p className="font-serif text-navy text-3xl md:text-4xl lg:text-5xl font-light italic leading-[1.25] mb-10">
+          <p className="font-serif text-navy text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light italic leading-[1.25] mb-10">
             &ldquo;El verdadero lujo no es el precio&nbsp;de una tela;
             <br className="hidden md:block"/>
             es la <span className="font-semibold not-italic text-burgundy">certeza</span> de que
@@ -81,7 +81,7 @@ export default function Testimonial() {
 
         {/* Client testimonial */}
         <div
-          className="reveal-t mt-20 bg-navy/5 border border-burgundy/15 p-10 md:p-12 max-w-3xl mx-auto"
+          className="reveal-t mt-20 bg-navy/5 border border-burgundy/15 p-6 sm:p-8 md:p-10 lg:p-12 max-w-3xl mx-auto"
           style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
         >
           <div className="flex flex-col md:flex-row gap-8 items-center text-left">

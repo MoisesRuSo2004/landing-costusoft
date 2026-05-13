@@ -1,6 +1,7 @@
 "use client";
 
 import { Brain, MessageSquare, TrendingUp, Cpu } from "lucide-react";
+import Image from "next/image";
 
 const queries = [
   {
@@ -20,10 +21,26 @@ const queries = [
 ];
 
 const models = [
-  { name: "LLaMA 3.3 70B", desc: "Motor NLP — consultas en lenguaje natural", color: "#49c21b" },
-  { name: "Prophet", desc: "Series de tiempo — estacionalidad escolar", color: "#7dd3fc" },
-  { name: "XGBoost", desc: "Refinamiento predictivo con features avanzadas", color: "#86efac" },
-  { name: "PuLP + CBC", desc: "ILP — optimización de producción", color: "#c4b5fd" },
+  {
+    name: "LLaMA 3.3 70B",
+    desc: "Motor NLP — consultas en lenguaje natural",
+    color: "#49c21b",
+  },
+  {
+    name: "Prophet",
+    desc: "Series de tiempo — estacionalidad escolar",
+    color: "#7dd3fc",
+  },
+  {
+    name: "XGBoost",
+    desc: "Refinamiento predictivo con features avanzadas",
+    color: "#86efac",
+  },
+  {
+    name: "PuLP + CBC",
+    desc: "ILP — optimización de producción",
+    color: "#c4b5fd",
+  },
 ];
 
 export default function AISection() {
@@ -31,26 +48,54 @@ export default function AISection() {
     <section
       id="ai"
       className="section-padding relative overflow-hidden"
-      style={{ background: "linear-gradient(145deg, #071e4a 0%, #0b3d91 45%, #0a5c1e 100%)" }}
+      style={{
+        background:
+          "linear-gradient(145deg, #071e4a 0%, #0b3d91 45%, #0a5c1e 100%)",
+      }}
     >
       {/* Grid overlay */}
       <div className="absolute inset-0 grid-bg opacity-10" />
 
+      {/* Logo — esquina inferior-derecha flotando */}
+      <div
+        className="absolute bottom-[-40px] right-[-40px] pointer-events-none select-none"
+        aria-hidden="true"
+        style={{
+          width: 280,
+          height: 280,
+          opacity: 0.06,
+          filter: "brightness(0) invert(1)",
+          transform: "rotate(15deg)",
+        }}
+      >
+        <Image src="/logo1.png" alt="" fill className="object-contain" />
+      </div>
+
       {/* Glow orbs */}
       <div
         className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(73,194,27,0.08) 0%, transparent 70%)" }}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(73,194,27,0.08) 0%, transparent 70%)",
+        }}
       />
       <div
         className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(11,61,145,0.3) 0%, transparent 70%)" }}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(11,61,145,0.3) 0%, transparent 70%)",
+        }}
       />
 
       <div className="container-landing relative z-10">
         <div className="text-center mb-14">
           <div
             className="inline-flex items-center gap-2 badge mb-4"
-            style={{ background: "rgba(73,194,27,0.15)", border: "1px solid rgba(73,194,27,0.3)", color: "#49c21b" }}
+            style={{
+              background: "rgba(73,194,27,0.15)",
+              border: "1px solid rgba(73,194,27,0.3)",
+              color: "#49c21b",
+            }}
           >
             <Brain className="w-3.5 h-3.5" />
             Inteligencia Artificial
@@ -74,25 +119,41 @@ export default function AISection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {/* Chat mockup */}
           <div
             className="rounded-2xl overflow-hidden border"
-            style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              borderColor: "rgba(255,255,255,0.1)",
+              backdropFilter: "blur(12px)",
+            }}
           >
             {/* Header */}
             <div
-              className="flex items-center gap-3 px-5 py-4 border-b"
-              style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)" }}
+              className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 border-b"
+              style={{
+                borderColor: "rgba(255,255,255,0.08)",
+                background: "rgba(255,255,255,0.04)",
+              }}
             >
-              <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, #0b3d91, #49c21b)" }}>
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center"
+                style={{
+                  background: "linear-gradient(135deg, #0b3d91, #49c21b)",
+                }}
+              >
                 <Brain className="w-4 h-4 text-white" />
               </div>
               <div>
-                <div className="text-[13px] font-semibold text-white">Asistente CostuSoft</div>
+                <div className="text-[13px] font-semibold text-white">
+                  Asistente CostuSoft Control
+                </div>
                 <div className="flex items-center gap-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                  <span className="text-[10px] text-blue-300">LLaMA 3.3 70B · En línea</span>
+                  <span className="text-[10px] text-blue-300">
+                    LLaMA 3.3 70B · En línea
+                  </span>
                 </div>
               </div>
             </div>
@@ -104,7 +165,10 @@ export default function AISection() {
                   <div className="flex justify-end">
                     <div
                       className="max-w-[80%] rounded-2xl rounded-tr-sm px-4 py-3"
-                      style={{ background: "rgba(73,194,27,0.2)", border: "1px solid rgba(73,194,27,0.3)" }}
+                      style={{
+                        background: "rgba(73,194,27,0.2)",
+                        border: "1px solid rgba(73,194,27,0.3)",
+                      }}
                     >
                       <p className="text-sm text-white">{q.q}</p>
                     </div>
@@ -118,7 +182,10 @@ export default function AISection() {
                     </div>
                     <div
                       className="flex-1 rounded-2xl rounded-tl-sm px-4 py-3"
-                      style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}
+                      style={{
+                        background: "rgba(255,255,255,0.07)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                      }}
                     >
                       <div
                         className="text-[9px] font-bold mb-1.5 uppercase tracking-wider px-1.5 py-0.5 rounded inline-block"
@@ -126,7 +193,9 @@ export default function AISection() {
                       >
                         {q.tag}
                       </div>
-                      <p className="text-[12px] text-blue-100 leading-relaxed">{q.a}</p>
+                      <p className="text-[12px] text-blue-100 leading-relaxed">
+                        {q.a}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -134,10 +203,15 @@ export default function AISection() {
 
               <div
                 className="mt-1 flex items-center gap-2 rounded-xl px-4 py-3"
-                style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
               >
                 <MessageSquare className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                <span className="text-[12px] text-blue-400">Pregunta algo sobre tu taller...</span>
+                <span className="text-[12px] text-blue-400">
+                  Pregunta algo sobre tu taller...
+                </span>
               </div>
             </div>
           </div>
@@ -147,11 +221,16 @@ export default function AISection() {
             {/* AI Stack */}
             <div
               className="rounded-2xl p-6 border"
-              style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" }}
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                borderColor: "rgba(255,255,255,0.1)",
+              }}
             >
               <div className="flex items-center gap-2 mb-5">
                 <Cpu className="w-4 h-4" style={{ color: "#49c21b" }} />
-                <span className="text-sm font-semibold text-white">Stack de IA</span>
+                <span className="text-sm font-semibold text-white">
+                  Stack de IA
+                </span>
               </div>
               <div className="flex flex-col gap-4">
                 {models.map((m) => (
@@ -161,7 +240,9 @@ export default function AISection() {
                       style={{ backgroundColor: m.color }}
                     />
                     <div>
-                      <div className="text-[13px] font-semibold text-white">{m.name}</div>
+                      <div className="text-[13px] font-semibold text-white">
+                        {m.name}
+                      </div>
                       <div className="text-[11px] text-blue-300">{m.desc}</div>
                     </div>
                   </div>
@@ -172,22 +253,36 @@ export default function AISection() {
             {/* Query types */}
             <div
               className="rounded-2xl p-6 border"
-              style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" }}
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                borderColor: "rgba(255,255,255,0.1)",
+              }}
             >
               <div className="flex items-center gap-2 mb-4">
                 <TrendingUp className="w-4 h-4 text-blue-300" />
-                <span className="text-sm font-semibold text-white">9 tipos de consulta</span>
+                <span className="text-sm font-semibold text-white">
+                  9 tipos de consulta
+                </span>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  "Stock crítico", "Prenda a priorizar", "Predicción demanda",
-                  "Riesgo de pedido", "Consumo de insumo", "Plan de producción",
-                  "Historial colegio", "Alerta de reorden", "Resumen ejecutivo",
+                  "Stock crítico",
+                  "Prenda a priorizar",
+                  "Predicción demanda",
+                  "Riesgo de pedido",
+                  "Consumo de insumo",
+                  "Plan de producción",
+                  "Historial colegio",
+                  "Alerta de reorden",
+                  "Resumen ejecutivo",
                 ].map((q) => (
                   <div
                     key={q}
                     className="text-[11px] text-blue-200 rounded-lg px-3 py-2"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
+                    style={{
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
                   >
                     {q}
                   </div>
@@ -199,12 +294,13 @@ export default function AISection() {
             <div
               className="rounded-2xl p-5 border"
               style={{
-                background: "linear-gradient(135deg, rgba(73,194,27,0.15) 0%, rgba(11,61,145,0.2) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(73,194,27,0.15) 0%, rgba(11,61,145,0.2) 100%)",
                 borderColor: "rgba(73,194,27,0.3)",
               }}
             >
               <div
-                className="text-4xl font-black mb-1"
+                className="text-3xl sm:text-4xl font-black mb-1"
                 style={{
                   fontFamily: "var(--font-sora)",
                   background: "linear-gradient(135deg, #49c21b, #7dd3fc)",
@@ -216,8 +312,8 @@ export default function AISection() {
                 95%+
               </div>
               <div className="text-sm text-blue-200 leading-relaxed">
-                Precisión en predicciones de demanda escolar.
-                Prophet captura estacionalidad; XGBoost la refina.
+                Precisión en predicciones de demanda escolar. Prophet captura
+                estacionalidad; XGBoost la refina.
               </div>
             </div>
           </div>

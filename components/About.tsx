@@ -43,12 +43,12 @@ export default function About() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mt-10">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center mt-10">
 
           {/* Text column */}
           <div className="space-y-8">
             <h2
-              className="reveal font-serif text-navy text-4xl md:text-5xl font-light leading-[1.15]"
+              className="reveal font-serif text-navy text-3xl sm:text-4xl md:text-5xl font-light leading-[1.15]"
               style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
             >
               Donde el hilo encuentra
@@ -101,7 +101,7 @@ export default function About() {
               {/* Offset border */}
               <div className="absolute -top-4 -left-4 w-full h-full border border-burgundy/30" />
               {/* Stats card */}
-              <div className="bg-navy p-10 md:p-12 relative">
+              <div className="bg-navy p-6 sm:p-8 md:p-10 lg:p-12 relative">
                 <div className="text-[10px] tracking-[0.3em] uppercase font-sans text-pearl mb-8">
                   Nuestra esencia en cifras
                 </div>

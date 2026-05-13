@@ -121,11 +121,11 @@ export default function System() {
         </div>
 
         {/* Feature grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
           {features.map((f) => (
             <div
               key={f.tag}
-              className="reveal-card group relative bg-navy-light border border-white/8 p-8 hover:border-burgundy/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(108,46,63,0.15)]"
+              className="reveal-card group relative bg-navy-light border border-white/8 p-5 sm:p-6 md:p-8 hover:border-burgundy/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(108,46,63,0.15)]"
               style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
             >
               {/* Tag */}
@@ -158,7 +158,7 @@ export default function System() {
         <div className="text-center mt-16">
           <a
             href="#contacto"
-            className="inline-flex items-center gap-3 border border-burgundy/60 text-ivory font-sans text-[12px] tracking-[0.22em] uppercase px-10 py-4 hover:bg-burgundy hover:border-burgundy transition-all duration-300"
+            className="inline-flex items-center gap-3 border border-burgundy/60 text-ivory font-sans text-[12px] tracking-[0.22em] uppercase px-6 sm:px-10 py-3 sm:py-4 hover:bg-burgundy hover:border-burgundy transition-all duration-300"
           >
             Solicitar una demostración
           </a>

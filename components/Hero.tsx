@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Play, Sparkles } from "lucide-react";
+import HeroVisual from "@/components/HeroVisual";
 
 export default function Hero() {
   return (
@@ -27,14 +28,14 @@ export default function Hero() {
 
       {/* Floating orbs */}
       <div
-        className="float absolute top-32 right-[10%] w-64 h-64 rounded-full pointer-events-none"
+        className="float hidden sm:block absolute top-32 right-[10%] w-64 h-64 rounded-full pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)",
         }}
       />
       <div
-        className="float-slow absolute bottom-40 left-[8%] w-48 h-48 rounded-full pointer-events-none"
+        className="float-slow hidden sm:block absolute bottom-40 left-[8%] w-48 h-48 rounded-full pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(22,163,74,0.05) 0%, transparent 70%)",
@@ -51,20 +52,20 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-gray-900 leading-[1.08] mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-[1.08] mb-6">
             Tu taller,{" "}
             <span className="shimmer-text">inteligente.</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10">
             Inventario en tiempo real, predicciones de demanda con IA y
             optimización automática de producción. Todo en un solo sistema
             diseñado para talleres de uniformes escolares.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 sm:mb-16">
             <a
               href="#pricing"
               className="btn-primary text-[15px] py-3.5 px-8 w-full sm:w-auto justify-center"
@@ -82,7 +83,7 @@ export default function Hero() {
           </div>
 
           {/* Social proof strip */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-400 text-sm">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-gray-400 text-sm">
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
                 {[
@@ -111,111 +112,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Dashboard preview */}
-        <div className="mt-20 relative max-w-5xl mx-auto">
-          <div className="border-gradient rounded-2xl overflow-hidden glow-blue shadow-2xl shadow-blue-900/10 bg-white">
-            {/* Window chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-100 bg-gray-50">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-rose-400" />
-                <div className="w-3 h-3 rounded-full bg-amber-400" />
-                <div className="w-3 h-3 rounded-full bg-emerald-400" />
-              </div>
-              <div className="flex-1 mx-4">
-                <div className="bg-white border border-gray-200 rounded-md px-3 py-1 text-[11px] text-gray-400 text-center max-w-xs mx-auto">
-                  app.costusoft.com/dashboard
-                </div>
-              </div>
-            </div>
-
-            {/* Fake dashboard UI */}
-            <div className="p-6 grid grid-cols-12 gap-4 bg-[#F9FAFB]" style={{ minHeight: 360 }}>
-              {/* Sidebar */}
-              <div className="col-span-2 bg-white rounded-xl border border-gray-100 p-3 flex flex-col gap-1.5">
-                {["Dashboard", "Inventario", "Pedidos", "Predicción", "Optimizar", "Reportes"].map(
-                  (item, i) => (
-                    <div
-                      key={item}
-                      className={`rounded-lg px-3 py-2 text-[11px] font-medium ${
-                        i === 0
-                          ? "bg-blue-50 text-blue-700"
-                          : "text-gray-400 hover:text-gray-600"
-                      }`}
-                    >
-                      {item}
-                    </div>
-                  )
-                )}
-              </div>
-
-              {/* Main area */}
-              <div className="col-span-10 flex flex-col gap-4">
-                {/* Top stat cards */}
-                <div className="grid grid-cols-4 gap-3">
-                  {[
-                    { label: "Stock total", value: "12,480", color: "#0b3d91", delta: "+3.2%", bg: "#EFF6FF" },
-                    { label: "Pedidos activos", value: "47", color: "#7C3AED", delta: "+8", bg: "#FAF5FF" },
-                    { label: "Predicción mes", value: "1,920", color: "#0369A1", delta: "95% conf.", bg: "#F0F9FF" },
-                    { label: "Utilidad opt.", value: "$4.8M", color: "#16A34A", delta: "OPTIMAL", bg: "#F0FDF4" },
-                  ].map((card) => (
-                    <div
-                      key={card.label}
-                      className="rounded-xl p-3 bg-white border border-gray-100 shadow-sm"
-                    >
-                      <div className="text-[10px] text-gray-400 mb-1">{card.label}</div>
-                      <div className="text-[18px] font-bold text-gray-900 leading-none mb-1">
-                        {card.value}
-                      </div>
-                      <div
-                        className="text-[10px] font-semibold px-1.5 py-0.5 rounded inline-block"
-                        style={{ color: card.color, backgroundColor: card.bg }}
-                      >
-                        {card.delta}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Chart area */}
-                <div className="flex-1 rounded-xl bg-white border border-gray-100 shadow-sm p-4">
-                  <div className="text-[11px] text-gray-600 font-semibold mb-3">
-                    Predicción de demanda — Próximas 12 semanas
-                  </div>
-                  <div className="flex items-end gap-1.5 h-24">
-                    {[40, 55, 48, 72, 65, 80, 58, 90, 75, 88, 95, 100].map(
-                      (h, i) => (
-                        <div
-                          key={i}
-                          className="flex-1 rounded-t"
-                          style={{
-                            height: `${h}%`,
-                            background:
-                              i >= 8
-                                ? "linear-gradient(to top, #0b3d91, #3B82F6)"
-                                : "#DBEAFE",
-                          }}
-                        />
-                      )
-                    )}
-                  </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-[9px] text-gray-400">Sem 1</span>
-                    <span className="text-[9px] text-blue-600 font-medium">
-                      ▲ IA Forecast (Prophet + XGBoost)
-                    </span>
-                    <span className="text-[9px] text-gray-400">Sem 12</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Glow under preview */}
-          <div
-            className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-12 blur-3xl pointer-events-none"
-            style={{ background: "rgba(37,99,235,0.10)" }}
-          />
-        </div>
+        {/* Bento visual */}
+        <HeroVisual />
       </div>
     </section>
   );

@@ -24,11 +24,16 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-200 py-2 shadow-sm"
-          : "bg-white/70 backdrop-blur-sm py-4"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.70)",
+        backdropFilter: "blur(12px)",
+        paddingTop:    scrolled ? "8px"  : "16px",
+        paddingBottom: scrolled ? "8px"  : "16px",
+        boxShadow: scrolled
+          ? "0 1px 0 0 rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04)"
+          : "none",
+      }}
     >
       <div className="container-landing flex items-center justify-between">
         {/* ── Logo ── */}
@@ -111,6 +116,15 @@ export default function Navbar() {
             </a>
           ))}
           <hr className="border-gray-100" />
+          <a
+            href="https://app.costusoft.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="btn-secondary text-sm justify-center"
+          >
+            Iniciar sesión
+          </a>
           <a
             href="#pricing"
             onClick={() => setOpen(false)}

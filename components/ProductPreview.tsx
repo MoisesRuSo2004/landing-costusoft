@@ -43,7 +43,7 @@ export default function ProductPreview() {
             </div>
 
             {/* Dashboard body */}
-            <div className="p-6 bg-[#F9FAFB]">
+            <div className="p-4 sm:p-6 bg-[#F9FAFB]">
               {/* Top KPIs */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
                 {[

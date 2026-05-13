@@ -29,26 +29,31 @@ const sections = [
 export default function Footer() {
   return (
     <footer className="relative border-t border-gray-100 bg-white overflow-hidden min-h-[480px]">
-      {/* ── Watermark ── */}
+      {/* ── Watermark texto ── */}
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
         aria-hidden="true"
       >
         <span
           className="text-[clamp(80px,16vw,200px)] font-black tracking-tighter leading-none whitespace-nowrap"
-          style={{
-            color: "#E5E7EB",
-            opacity: 0.4,
-            userSelect: "none",
-          }}
+          style={{ color: "#E5E7EB", opacity: 0.4, userSelect: "none" }}
         >
           CostuSoft
         </span>
       </div>
 
+      {/* ── Logo watermark esquina inferior-izquierda ── */}
+      <div
+        className="absolute bottom-[-30px] left-[-30px] pointer-events-none select-none"
+        aria-hidden="true"
+        style={{ width: 220, height: 220, opacity: 0.055, filter: "brightness(0)", transform: "rotate(-8deg)" }}
+      >
+        <Image src="/logo1.png" alt="" fill className="object-contain" />
+      </div>
+
       {/* ── Main body ── */}
       <div className="relative z-10 container-landing" style={{ paddingTop: "48px", paddingBottom: "24px" }}>
-        <div className="grid md:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-2 flex flex-col gap-5">
             {/* Logo */}

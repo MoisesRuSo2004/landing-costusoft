@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 const benefits = [
   {
     icon: (
-      <svg viewBox="0 0 56 56" fill="none" className="w-14 h-14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="28" cy="28" r="22" strokeOpacity="0.25"/>
         <path d="M20 28l6 6 10-12" strokeWidth="1.8"/>
         <path d="M28 10v4M28 42v4M10 28h4M42 28h4" strokeOpacity="0.4"/>
@@ -19,7 +19,7 @@ const benefits = [
   },
   {
     icon: (
-      <svg viewBox="0 0 56 56" fill="none" className="w-14 h-14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="28" cy="28" r="22" strokeOpacity="0.25"/>
         <rect x="18" y="16" width="20" height="20" rx="2" />
         <path d="M22 28h12M22 24h8M28 36v4" strokeWidth="1.8"/>
@@ -33,7 +33,7 @@ const benefits = [
   },
   {
     icon: (
-      <svg viewBox="0 0 56 56" fill="none" className="w-14 h-14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 56 56" fill="none" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="28" cy="28" r="22" strokeOpacity="0.25"/>
         <path d="M18 36V24l10-8 10 8v12" strokeWidth="1.8"/>
         <path d="M24 36v-8h8v8" strokeWidth="1.8"/>
@@ -100,7 +100,7 @@ export default function Benefits() {
         </div>
 
         {/* Benefits grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
           {benefits.map((b) => (
             <div
               key={b.title}
@@ -108,7 +108,7 @@ export default function Benefits() {
               style={{ opacity: 0, transform: "translateY(30px)", transition: "opacity 0.8s ease, transform 0.8s ease" }}
             >
               {/* Card */}
-              <div className="bg-beige border border-transparent hover:border-burgundy/30 p-10 h-full flex flex-col transition-all duration-500 hover:shadow-lg">
+              <div className="bg-beige border border-transparent hover:border-burgundy/30 p-6 sm:p-8 md:p-10 h-full flex flex-col transition-all duration-500 hover:shadow-lg">
                 {/* Icon */}
                 <div className="text-burgundy mb-6">
                   {b.icon}
@@ -116,7 +116,7 @@ export default function Benefits() {
 
                 {/* Metric */}
                 <div className="flex items-baseline gap-3 mb-5">
-                  <span className="font-serif text-navy text-4xl font-semibold">{b.metric}</span>
+                  <span className="font-serif text-navy text-3xl sm:text-4xl font-semibold">{b.metric}</span>
                   <span className="font-sans text-pearl text-[10px] tracking-[0.18em] uppercase leading-tight">{b.metricLabel}</span>
                 </div>
 

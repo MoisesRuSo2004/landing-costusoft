@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, Zap, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const plans = [
   {
@@ -33,7 +34,7 @@ const plans = [
       "Tablero de riesgos (4 niveles)",
       "Historial de optimizaciones + PDF",
       "Multi-colegio ilimitado",
-      "3 roles de usuario",
+      "4 roles de usuario",
       "Soporte prioritario",
     ],
     cta: "Solicitar demo",
@@ -43,7 +44,14 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="section-padding relative overflow-hidden" style={{ background: "linear-gradient(175deg, #f0fdf4 0%, #ffffff 50%, #EFF6FF 100%)" }}>
+    <section
+      id="pricing"
+      className="section-padding relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(175deg, #f0fdf4 0%, #ffffff 50%, #EFF6FF 100%)",
+      }}
+    >
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] pointer-events-none"
         style={{
@@ -51,6 +59,15 @@ export default function Pricing() {
             "radial-gradient(ellipse at center, rgba(37,99,235,0.04) 0%, transparent 65%)",
         }}
       />
+
+      {/* Logo ghost — centrado en fondo claro */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+        aria-hidden="true"
+        style={{ width: 260, height: 260, opacity: 0.035, filter: "brightness(0)" }}
+      >
+        <Image src="/logo1.png" alt="" fill className="object-contain" />
+      </div>
 
       <div className="container-landing relative z-10">
         <div className="text-center mb-14">
@@ -64,11 +81,11 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl p-8 flex flex-col border ${
+              className={`relative rounded-2xl p-6 sm:p-8 flex flex-col border ${
                 plan.highlight
                   ? "border-blue-200 shadow-lg shadow-blue-900/8"
                   : "border-gray-100 shadow-sm bg-white"
@@ -94,7 +111,9 @@ export default function Pricing() {
 
               {/* Plan header */}
               <div className="mb-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{plan.name}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                  {plan.name}
+                </h3>
                 <p className="text-sm text-gray-500 mb-4">{plan.desc}</p>
                 <div className="text-3xl font-black gradient-text">Cotizar</div>
               </div>

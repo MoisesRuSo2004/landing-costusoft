@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export default function CTAFinal() {
   return (
@@ -11,6 +12,21 @@ export default function CTAFinal() {
     >
       {/* Grid overlay */}
       <div className="absolute inset-0 grid-bg opacity-10" />
+
+      {/* Logo — sello de marca esquina superior-derecha */}
+      <div
+        className="absolute top-[-20px] right-[-20px] pointer-events-none select-none"
+        aria-hidden="true"
+        style={{
+          width: 320,
+          height: 320,
+          opacity: 0.10,
+          filter: "brightness(0) invert(1)",
+          transform: "rotate(-12deg)",
+        }}
+      >
+        <Image src="/logo1.png" alt="" fill className="object-contain" />
+      </div>
 
       {/* Glow orbs */}
       <div
@@ -49,7 +65,7 @@ export default function CTAFinal() {
             </span>
           </h2>
 
-          <p className="text-lg text-blue-100 leading-relaxed mb-10 max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-blue-100 leading-relaxed mb-10 max-w-xl mx-auto">
             Deja de confiar en el instinto. Empieza a producir con datos,
             predicciones de IA y el único optimizador ILP para talleres de
             confección escolar en Colombia.
@@ -59,7 +75,7 @@ export default function CTAFinal() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="mailto:contacto@costusoft.com"
-              className="inline-flex items-center gap-2 text-[15px] font-semibold py-4 px-10 rounded-xl w-full sm:w-auto justify-center transition-all duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 text-[15px] font-semibold py-4 px-6 sm:px-10 rounded-xl w-full sm:w-auto justify-center transition-all duration-200 hover:-translate-y-0.5"
               style={{
                 background: "linear-gradient(135deg, #49c21b, #3daf12)",
                 color: "white",
@@ -73,7 +89,7 @@ export default function CTAFinal() {
               href="https://app.costusoft.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[15px] font-medium py-4 px-10 rounded-xl w-full sm:w-auto justify-center transition-all duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 text-[15px] font-medium py-4 px-6 sm:px-10 rounded-xl w-full sm:w-auto justify-center transition-all duration-200 hover:-translate-y-0.5"
               style={{
                 background: "rgba(255,255,255,0.12)",
                 border: "1px solid rgba(255,255,255,0.25)",

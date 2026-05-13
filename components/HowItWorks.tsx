@@ -89,7 +89,7 @@ export default function HowItWorks() {
               return (
                 <div
                   key={step.step}
-                  className="relative flex gap-6 bg-white rounded-2xl p-6 border shadow-sm hover:shadow-md transition-all duration-300"
+                  className="relative flex gap-6 bg-white rounded-2xl p-5 sm:p-6 border shadow-sm hover:shadow-md transition-all duration-300"
                   style={{ borderColor: step.border }}
                 >
                   <div className="flex-shrink-0 relative z-10">
