@@ -42,16 +42,8 @@ export default function Footer() {
         </span>
       </div>
 
-      {/* ── Logo watermark esquina inferior-izquierda ── */}
-      <div
-        className="absolute bottom-[-30px] left-[-30px] pointer-events-none select-none"
-        aria-hidden="true"
-        style={{ width: 220, height: 220, opacity: 0.055, filter: "brightness(0)", transform: "rotate(-8deg)" }}
-      >
-        <Image src="/logo1.png" alt="" fill className="object-contain" />
-      </div>
 
-      {/* ── Main body ── */}
+{/* ── Main body ── */}
       <div className="relative z-10 container-landing" style={{ paddingTop: "48px", paddingBottom: "24px" }}>
         <div className="grid md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}

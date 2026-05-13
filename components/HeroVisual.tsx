@@ -1,6 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+
+function CountUp({ target, inView, delay = 0 }: { target: number; inView: boolean; delay?: number }) {
+  const mv = useMotionValue(0);
+  const spring = useSpring(mv, { stiffness: 50, damping: 16 });
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const t = setTimeout(() => mv.set(target), delay);
+    return () => clearTimeout(t);
+  }, [inView, target, mv, delay]);
+  useEffect(() => {
+    const unsub = spring.on("change", v => setDisplay(Math.round(v)));
+    return unsub;
+  }, [spring]);
+  return <>{display}</>;
+}
 import {
   Zap, Brain, TrendingUp, AlertTriangle,
   CheckCircle2, Activity, Building2,
@@ -36,8 +53,11 @@ const colegios = [
 
 /* ── Component ────────────────────────────────────────────────────────── */
 export default function HeroVisual() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <div className="w-full mt-12 sm:mt-16 md:mt-20 max-w-5xl mx-auto px-1">
+    <div ref={ref} className="w-full mt-12 sm:mt-16 md:mt-20 max-w-5xl mx-auto px-1">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-2.5">
 
         {/* ────────────────────────────────────────────────────────────
@@ -81,14 +101,23 @@ export default function HeroVisual() {
                       </span>
                     </div>
                   </div>
-                  <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${item.pct}%` }}
                       transition={{ duration: 0.9, delay: 0.7 + i * 0.15, ease: "easeOut" }}
-                      className="h-full rounded-full"
+                      className="h-full rounded-full relative overflow-hidden"
                       style={{ backgroundColor: item.color }}
-                    />
+                    >
+                      {/* shimmer pass */}
+                      <motion.span
+                        className="absolute inset-y-0 w-8 -skew-x-12"
+                        style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent)" }}
+                        initial={{ left: "-2rem" }}
+                        animate={{ left: ["−2rem", "110%"] }}
+                        transition={{ duration: 0.7, delay: 1.7 + i * 0.15, ease: "easeInOut", repeat: Infinity, repeatDelay: 3.5 }}
+                      />
+                    </motion.div>
                   </div>
                 </div>
               ))}
@@ -201,7 +230,7 @@ export default function HeroVisual() {
                 backgroundClip: "text",
               }}
             >
-              97%
+              <CountUp target={97} inView={inView} delay={400} />%
             </div>
             <div className="text-[10px] text-gray-400 mb-2">Prophet + XGBoost</div>
             {/* Sparkline */}
@@ -244,9 +273,17 @@ export default function HeroVisual() {
                     initial={{ width: 0 }}
                     animate={{ width: `${s.pct}%` }}
                     transition={{ duration: 0.85, delay: 0.9 + i * 0.1, ease: "easeOut" }}
-                    className="h-full rounded-full"
+                    className="h-full rounded-full relative overflow-hidden"
                     style={{ backgroundColor: s.color }}
-                  />
+                  >
+                    <motion.span
+                      className="absolute inset-y-0 w-6 -skew-x-12"
+                      style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)" }}
+                      initial={{ left: "-1.5rem" }}
+                      animate={{ left: ["−1.5rem", "110%"] }}
+                      transition={{ duration: 0.6, delay: 1.8 + i * 0.12, ease: "easeInOut", repeat: Infinity, repeatDelay: 4 }}
+                    />
+                  </motion.div>
                 </div>
               </div>
             ))}
@@ -269,7 +306,9 @@ export default function HeroVisual() {
         <motion.div
           {...fadeUp(0.57)}
           className="col-span-full md:col-span-3 rounded-2xl p-4 relative overflow-hidden flex flex-col justify-between"
-          style={{ background: "linear-gradient(145deg, #071e4a 0%, #0b3d91 60%, #0a5c1e 100%)" }}
+          animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          style={{ background: "linear-gradient(145deg, #071e4a 0%, #0b3d91 60%, #0a5c1e 100%)", backgroundSize: "200% 200%" }}
         >
           <div className="absolute inset-0 grid-bg opacity-10" />
           <div className="relative z-10 flex flex-col gap-3 h-full">
@@ -283,7 +322,9 @@ export default function HeroVisual() {
             </div>
             <div>
               <div className="text-[10px] text-white/50 mb-0.5">Pedidos en producción</div>
-              <div className="text-[26px] font-black text-white leading-none">19</div>
+              <div className="text-[26px] font-black text-white leading-none">
+                <CountUp target={19} inView={inView} delay={800} />
+              </div>
             </div>
             <div className="mt-auto text-[9px] text-blue-300/70">
               Uptime 99.9% · Datos Colombia 🇨🇴
@@ -319,8 +360,8 @@ export default function HeroVisual() {
               </div>
             </div>
 
-            {/* Bars */}
-            <div className="flex items-end gap-1 h-14">
+            {/* Bars + scan line */}
+            <div className="flex items-end gap-1 h-14 relative overflow-hidden">
               {forecast.map((h, i) => (
                 <motion.div
                   key={i}
@@ -340,6 +381,14 @@ export default function HeroVisual() {
                   }}
                 />
               ))}
+              {/* vertical scan line sobre las barras */}
+              <motion.div
+                className="absolute inset-y-0 w-[2px] pointer-events-none"
+                style={{ background: "linear-gradient(to bottom, transparent, rgba(37,99,235,0.7), transparent)" }}
+                animate={{ left: ["-2px", "calc(100% + 2px)"] }}
+                transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" }}
+                aria-hidden="true"
+              />
             </div>
 
             <div className="flex justify-between mt-1.5">
