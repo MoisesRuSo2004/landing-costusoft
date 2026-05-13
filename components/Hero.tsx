@@ -74,11 +74,11 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#how-it-works"
+              href="/demo"
               className="btn-secondary text-[15px] py-3.5 px-8 w-full sm:w-auto justify-center"
             >
               <Play className="w-4 h-4 text-blue-600" />
-              Ver cómo funciona
+              Tour interactivo
             </a>
           </div>
 

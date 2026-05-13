@@ -80,6 +80,13 @@ export default function Navbar() {
         {/* ── CTAs ── */}
         <div className="hidden md:flex items-center gap-3">
           <a
+            href="/demo"
+            className="text-[13px] font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200 flex items-center gap-1"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            Ver demo
+          </a>
+          <a
             href="https://app.costusoft.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -115,6 +122,14 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <a
+            href="/demo"
+            onClick={() => setOpen(false)}
+            className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-2 transition-colors"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            Ver demo interactivo
+          </a>
           <hr className="border-gray-100" />
           <a
             href="https://app.costusoft.com"
