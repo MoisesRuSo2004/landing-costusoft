@@ -186,9 +186,12 @@ export default function DemoShell() {
         style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(11,61,145,0.18) 0%, transparent 70%)" }}
       />
 
+      {/* ── Layout: flex column fills the whole frame ── */}
+      <div className="absolute inset-0 flex flex-col z-10">
+
       {/* ── Top bar ── */}
       <div
-        className="absolute top-0 inset-x-0 z-30 flex items-center justify-between px-5 py-3.5"
+        className="flex-shrink-0 flex items-center justify-between px-5 py-3.5 z-30"
         style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", backdropFilter: "blur(12px)", background: "rgba(5,13,26,0.55)" }}
       >
         {/* Logo */}
@@ -253,44 +256,8 @@ export default function DemoShell() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="absolute top-[52px] inset-x-0 z-40 lg:hidden"
-            style={{ background: "rgba(5,13,26,0.97)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
-          >
-            {SCENES.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => { goTo(i); setMenuOpen(false); }}
-                className="w-full flex items-center gap-3 px-5 py-3 text-left hover:bg-white/5 transition-colors"
-              >
-                <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
-                  style={{ background: i === current ? s.roleColor : "rgba(255,255,255,0.1)", color: "#fff" }}>
-                  {i + 1}
-                </span>
-                <span className={`text-[13px] ${i === current ? "text-white font-medium" : "text-white/50"}`}>{s.title}</span>
-                {s.role && (
-                  <span className="ml-auto text-[10px] font-medium px-2 py-0.5 rounded-full"
-                    style={{ background: `${s.roleColor}22`, color: s.roleColor, border: `1px solid ${s.roleColor}44` }}>
-                    {s.role}
-                  </span>
-                )}
-              </button>
-            ))}
-            <a href="/" className="w-full flex items-center gap-2 px-5 py-3 text-[13px] text-white/40 border-t border-white/5 hover:text-white/60 transition-colors">
-              <X className="w-3.5 h-3.5" /> Salir del demo
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ── Main scene ── */}
-      <div className="absolute inset-0 pt-[52px] pb-[60px]">
+      {/* ── Main scene — fills remaining space ── */}
+      <div className="flex-1 min-h-0 relative">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={current}
@@ -314,7 +281,7 @@ export default function DemoShell() {
 
       {/* ── Bottom nav ── */}
       <div
-        className="absolute bottom-0 inset-x-0 z-30 flex items-center justify-between px-5 py-3.5"
+        className="flex-shrink-0 flex items-center justify-between px-5 py-3.5 z-30"
         style={{ borderTop: "1px solid rgba(255,255,255,0.06)", backdropFilter: "blur(12px)", background: "rgba(5,13,26,0.55)" }}
       >
         <button onClick={goPrev} disabled={current === 0}
@@ -345,6 +312,44 @@ export default function DemoShell() {
         </button>
       </div>
 
+      </div>{/* end flex-col layout */}
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="absolute top-[60px] inset-x-0 z-40 lg:hidden"
+            style={{ background: "rgba(5,13,26,0.97)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            {SCENES.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => { goTo(i); setMenuOpen(false); }}
+                className="w-full flex items-center gap-3 px-5 py-3 text-left hover:bg-white/5 transition-colors"
+              >
+                <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
+                  style={{ background: i === current ? s.roleColor : "rgba(255,255,255,0.1)", color: "#fff" }}>
+                  {i + 1}
+                </span>
+                <span className={`text-[13px] ${i === current ? "text-white font-medium" : "text-white/50"}`}>{s.title}</span>
+                {s.role && (
+                  <span className="ml-auto text-[10px] font-medium px-2 py-0.5 rounded-full"
+                    style={{ background: `${s.roleColor}22`, color: s.roleColor, border: `1px solid ${s.roleColor}44` }}>
+                    {s.role}
+                  </span>
+                )}
+              </button>
+            ))}
+            <a href="/" className="w-full flex items-center gap-2 px-5 py-3 text-[13px] text-white/40 border-t border-white/5 hover:text-white/60 transition-colors">
+              <X className="w-3.5 h-3.5" /> Salir del demo
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Role badge */}
       {scene.role && (
         <motion.div
@@ -360,7 +365,7 @@ export default function DemoShell() {
       )}
 
       {/* Keyboard hint */}
-      <div className="absolute bottom-[68px] right-5 z-20 hidden lg:flex items-center gap-1.5 text-[10px] text-white/18">
+      <div className="absolute bottom-[56px] right-5 z-20 hidden lg:flex items-center gap-1.5 text-[10px] text-white/18">
         <kbd className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">←</kbd>
         <kbd className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">→</kbd>
         <span>navegar</span>
