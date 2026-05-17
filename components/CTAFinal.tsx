@@ -11,7 +11,7 @@ export default function CTAFinal() {
       style={{ background: "linear-gradient(135deg, #0b3d91 0%, #0d5aa8 40%, #1a7a2e 80%, #49c21b 100%)" }}
     >
       {/* Grid overlay */}
-      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute inset-0 grid-bg-dark" />
 
       {/* Logo — sello de marca esquina superior-derecha */}
       <div

@@ -296,7 +296,7 @@ export default function AISection() {
       }}
     >
       {/* Grid overlay */}
-      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute inset-0 grid-bg-dark" />
 
       {/* Logo — esquina inferior-derecha flotando */}
       <div

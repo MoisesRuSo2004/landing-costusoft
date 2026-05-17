@@ -24,9 +24,9 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
-        backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.70)",
+        backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "rgba(7,30,74,0.35)",
         backdropFilter: "blur(12px)",
         paddingTop:    scrolled ? "8px"  : "16px",
         paddingBottom: scrolled ? "8px"  : "16px",
@@ -55,10 +55,16 @@ export default function Navbar() {
 
           {/* Texto */}
           <div className="leading-tight">
-            <span className="block font-bold text-[15px] tracking-tight text-gray-900 leading-none">
+            <span
+              className="block font-bold text-[15px] tracking-tight leading-none transition-colors duration-500"
+              style={{ color: scrolled ? "#111827" : "#ffffff" }}
+            >
               CostuSoft
             </span>
-            <span className="block text-[11px] font-medium text-blue-600 tracking-wide leading-none mt-0.5">
+            <span
+              className="block text-[11px] font-medium tracking-wide leading-none mt-0.5 transition-colors duration-500"
+              style={{ color: scrolled ? "#2563EB" : "#86efac" }}
+            >
               Control
             </span>
           </div>
@@ -70,7 +76,8 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-[13px] font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200"
+              className="text-[13px] font-medium transition-colors duration-200"
+              style={{ color: scrolled ? "#6B7280" : "rgba(191,219,254,0.85)" }}
             >
               {l.label}
             </a>
@@ -81,7 +88,8 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="/demo"
-            className="text-[13px] font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200 flex items-center gap-1"
+            className="text-[13px] font-medium transition-colors duration-200 flex items-center gap-1"
+            style={{ color: scrolled ? "#2563EB" : "#86efac" }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             Ver demo
@@ -90,7 +98,8 @@ export default function Navbar() {
             href="https://app.costusoft.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[13px] font-medium text-gray-600 hover:text-gray-900 transition-colors duration-200"
+            className="text-[13px] font-medium transition-colors duration-200"
+            style={{ color: scrolled ? "#4B5563" : "rgba(255,255,255,0.75)" }}
           >
             Iniciar sesión
           </a>

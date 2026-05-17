@@ -16,8 +16,8 @@ export default function HomePage() {
     <main className="relative overflow-x-hidden">
       <Navbar />
       <Hero />
-      <Stats />
       <Problem />
+      <Stats />
       <Features />
       <HowItWorks />
       <ProductPreview />
