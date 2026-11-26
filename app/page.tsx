@@ -6,6 +6,7 @@ import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import ProductPreview from "@/components/ProductPreview";
 import AISection from "@/components/AISection";
+import MobileDownload from "@/components/MobileDownload";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
@@ -22,6 +23,7 @@ export default function HomePage() {
       <HowItWorks />
       <ProductPreview />
       <AISection />
+      <MobileDownload />
       <Pricing />
       <FAQ />
       <CTAFinal />
